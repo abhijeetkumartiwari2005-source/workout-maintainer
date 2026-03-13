@@ -10,11 +10,12 @@ function App() {
   });
   const [name, setName] = useState('');
   const [isFinalized, setIsFinalized] = useState(false);
-  const [activeView, setActiveView] = useState('planWorkout');
+  const [activeView, setActiveView] = useState('home');
 
   useEffect(() => {
     localStorage.setItem('workouts', JSON.stringify(workouts));
   }, [workouts]);
+  const [showPlan, setShowPlan] = useState(false);
   
   const addWorkout = (e) => {
     e.preventDefault();
@@ -60,7 +61,15 @@ function App() {
 
   const renderContent = () => {
     switch (activeView) {
+      case'home':
+      return(
+      <div className="welcome-message">
+        <h2>Welcome to Workout Maintainer!</h2>
+        <p> select an option to get started.</p>
+        </div>
+          );
       case 'planWorkout':
+        
         return (
           <>
             {!isFinalized && (
