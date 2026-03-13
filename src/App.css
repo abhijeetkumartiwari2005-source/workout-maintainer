@@ -1,0 +1,171 @@
+.app-container {
+  display: flex;
+  height: 100%;
+}
+
+/* Basic layout */
+.app {
+  font-family: system-ui, sans-serif;
+  flex: 1;
+  padding: 2rem;
+  
+}
+
+.app-header {
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 1.5rem;
+  color: #ff4d4f;
+  background-color: rgba(20, 88, 53, 0.543);
+  padding: 1rem;
+  border-radius: 8px;
+  
+}
+
+.workout-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color : rgb(11, 11, 235);
+  
+}
+.safe-sets{
+  color: green;
+  font-style: bold;
+  
+}
+.big-warning-sets{
+  color : rgb(175, 13, 13);
+  font-style: bold;
+  
+}
+.warning-sets{
+  color : rgb(246, 246, 84);
+  font-style: bold;
+  
+}
+
+.workout-form input {
+  flex: 1;
+  /* allow the input to shrink below its content width so the button doesn't get pushed off screen */
+  min-width: 0;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.workout-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.workout-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.workout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.remove-button {
+  background: transparent;
+  border: 1px solid #ff4d4f;
+  border-radius: 4px;
+  color: #ff4d4f;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.empty-message {
+  color: #011905de;
+  text-align: center;
+  opacity: 70%;
+  margin-top: 1rem;
+  font-style: bold;
+  font-family: monospace;
+  
+  
+}
+
+/* Workouts Table */
+.workouts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.workouts-table th,
+.workouts-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.workouts-table th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: #333;
+}
+
+.workouts-table tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.workouts-table tr:last-child {
+  border-bottom: none;
+}
+
+.workouts-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.workouts-table tr.completed {
+  background-color: #fafafa;
+  color: #aaa;
+}
+
+.workouts-table tr.completed .workout-name {
+  text-decoration: line-through;
+}
+
+.sets-progress {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.completion-button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.completion-button:hover {
+  background-color: #218838;
+}
+
+.workouts-table tr.completed .completion-button {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.workouts-table tr.completed .completion-button:hover {
+  background-color: #e0a800;
+}

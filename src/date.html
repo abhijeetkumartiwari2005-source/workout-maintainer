@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Maintainer</title>
+</head>
+<body>
+
+    <h2 id="workout-date">Loading date...</h2>
+
+    <script>
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = today.toLocaleDateString('en-US', options);
+        
+        document.getElementById('workout-date').innerText = formattedDate;
+    </script>
+</body>
+</html>

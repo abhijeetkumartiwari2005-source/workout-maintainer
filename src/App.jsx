@@ -1,0 +1,144 @@
+import { useState, useEffect } from 'react';
+import './App.css';
+import WorkoutsTable from './WorkoutsTable';
+import Sidebar from './Sidebar';
+
+function App() {
+  const [workouts, setWorkouts] = useState(() => {
+    const savedWorkouts = localStorage.getItem('workouts');
+    return savedWorkouts ? JSON.parse(savedWorkouts) : [];
+  });
+  const [name, setName] = useState('');
+  const [isFinalized, setIsFinalized] = useState(false);
+  const [activeView, setActiveView] = useState('planWorkout');
+
+  useEffect(() => {
+    localStorage.setItem('workouts', JSON.stringify(workouts));
+  }, [workouts]);
+  
+  const addWorkout = (e) => {
+    e.preventDefault();
+    const trimmedName = name.trim();
+    if (!trimmedName) return;
+    setWorkouts((prevWorkouts) => [
+      ...prevWorkouts,
+      {
+        id: crypto.randomUUID(),
+        name: trimmedName,
+        reps: '',
+        sets: '',
+        setsCompleted: 0,
+        completed: false,
+      },
+    ]);
+    setName('');
+  };
+
+  const removeWorkout = (id) => {
+    setWorkouts((prevWorkouts) => prevWorkouts.filter((w) => w.id !== id));
+  };
+
+  const updateWorkout = (id, field, value) => {
+    setWorkouts((prevWorkouts) =>
+      prevWorkouts.map((w) => (w.id === id ? { ...w, [field]: value } : w))
+    );
+  };
+
+  const updateWorkoutCompletion = (id, setsCompleted) => {
+    setWorkouts((prevWorkouts) =>
+      prevWorkouts.map((w) =>
+        w.id === id
+          ? {
+              ...w,
+              setsCompleted,
+              completed: setsCompleted === parseInt(w.sets, 10),
+            }
+          : w
+      )
+    );
+  };
+
+  const renderContent = () => {
+    switch (activeView) {
+      case 'planWorkout':
+        return (
+          <>
+            {!isFinalized && (
+              <form onSubmit={addWorkout} className="workout-form">
+                <label htmlFor="workout-input" className="sr-only">
+                  Workout Name
+                </label>
+                <input
+                  id="workout-input"
+                  type="text"
+                  placeholder="New workout name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <button type="submit">Add</button>
+              </form>
+            )}
+            
+    
+            {workouts.length > 0 && (
+              <button
+                className="finalize-toggle"
+                onClick={() => setIsFinalized(!isFinalized)}
+              >
+                {isFinalized ? '← Edit Workout List' : 'Finalize & Add Details'}
+              </button>
+            )}
+    
+            {isFinalized ? (
+              <WorkoutsTable
+                workouts={workouts}
+                updateWorkoutCompletion={updateWorkoutCompletion}
+                updateWorkout={updateWorkout}
+                removeWorkout={removeWorkout}
+              />
+            ) : workouts.length > 0 ? (
+              <ul className="workout-list">
+                {workouts.map((w) => (
+                  <li key={w.id} className="workout-item">
+                    <span className="workout-name">{w.name}</span>
+                    <button
+                      className="remove-button"
+                      onClick={() => removeWorkout(w.id)}
+                    >
+                      ×
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="empty-message">No workouts yet. Add one above.</p>
+            )}
+          </>
+        );
+      case 'premadePlans':
+        return <h2>Pre-made Plans</h2>;
+      case 'personalisedPlans':
+        return <h2>Personalised Plans</h2>;
+      default:
+        return <h2>Plan today's workout</h2>;
+    }
+  };
+  
+
+  return (
+    <div className="app-container">
+      <Sidebar setActiveView={setActiveView} />
+      <div className="app">
+        <header className="app-header">
+          <h1>Workout Maintainer</h1>
+          <h3>workout plan for {new Date().toLocaleDateString()}</h3>
+        </header>
+        <main className="app-main">
+          {renderContent()}
+        </main>
+      </div>
+    </div>
+  );
+}
+
+export default App;

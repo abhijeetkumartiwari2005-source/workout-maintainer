@@ -1,0 +1,21 @@
+html, body, #root {
+  height: 100%;
+}
+
+/* global reset and defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(rgba(63, 103, 189, 0.299), rgba(57, 181, 119, 0.24)), url('./assets/Gemini_Generated_Image_6kc4jk6kc4jk6kc4.png');
+  background-size: cover;
+  font-family: 'Inter', sans-serif;
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  color: #333;
+  line-height: 1.5;
+}
