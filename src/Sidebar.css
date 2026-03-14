@@ -9,6 +9,7 @@
 .sidebar:hover{
   background-color: rgb(242, 253, 95);
    transition: background-color 1.5s, color 0.5s;
+   text-shadow: 1px 1px 1px rgba(40, 2, 2, 0.7);
 }
 
 .sidebar-button {
@@ -16,6 +17,7 @@
   color: #333;
   padding: 15px;
   text-align: left;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   border: rgb(37, 15, 13) ;
   border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;

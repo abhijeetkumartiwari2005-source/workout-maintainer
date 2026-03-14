@@ -15,12 +15,23 @@
   text-align: center;
   font-family: monospace;
   margin-bottom: 1.5rem;
-  color: #ff4d4f;
+  color: #d5e1b6;
   background-color: rgba(20, 88, 53, 0.543);
   padding: 1rem;
   border-radius: 8px;
   
 }
+.welcome-message h2{
+  color:rgb(255, 255, 255,0.7);
+  text-align: left;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.welcome-message p{
+   color:rgb(255, 255, 255,0.7);
+  text-align: left;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
 
 .workout-form {
   display: flex;
