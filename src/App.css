@@ -210,7 +210,7 @@
   }
 } */
 
-/* Premade Plans Image Gallery */
+
 .image-gallery-container {
   display: flex;
   flex-direction: column;
@@ -218,7 +218,14 @@
 }
 
 .image-gallery-container img {
-  width: 100%; /* Perfectly fills the area apart from the sidebar */
-  height: auto; /* Scales proportionally */
-  border-radius: 8px; /* Optional: gently rounds the image corners */
+  width: 100%; 
+  height: auto;
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+}
+.image-gallery-container img:hover {
+  transition-duration: 0.5s;
+  transform: scale(1.05);
+
 }
