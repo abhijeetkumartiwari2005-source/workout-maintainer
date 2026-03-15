@@ -8,26 +8,28 @@
   font-family: system-ui, sans-serif;
   flex: 1;
   padding: 2rem;
-  
+
 }
 
 .app-header {
-  text-align: center;
+  text-align: left;
   font-family: monospace;
   margin-bottom: 1.5rem;
   color: #d5e1b6;
-  background-color: rgba(20, 88, 53, 0.543);
+  text-shadow: -1px -1px 1px #FFFFFF, 2px 2px 2px #000000;
   padding: 1rem;
   border-radius: 8px;
-  
+
 }
-.welcome-message h2{
-  color:rgb(255, 255, 255,0.7);
+
+.welcome-message h2 {
+  color: rgb(255, 255, 255, 0.7);
   text-align: left;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-.welcome-message p{
-   color:rgb(255, 255, 255,0.7);
+
+.welcome-message p {
+  color: rgb(255, 255, 255, 0.7);
   text-align: left;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
@@ -37,23 +39,26 @@
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  color : rgb(11, 11, 235);
-  
+  color: rgb(11, 11, 235);
+
 }
-.safe-sets{
+
+.safe-sets {
   color: green;
   font-style: bold;
-  
+
 }
-.big-warning-sets{
-  color : rgb(175, 13, 13);
+
+.big-warning-sets {
+  color: rgb(175, 13, 13);
   font-style: bold;
-  
+
 }
-.warning-sets{
-  color : rgb(246, 246, 84);
+
+.warning-sets {
+  color: rgb(246, 246, 84);
   font-style: bold;
-  
+
 }
 
 .workout-form input {
@@ -104,8 +109,8 @@
   margin-top: 1rem;
   font-style: bold;
   font-family: monospace;
-  
-  
+
+
 }
 
 /* Workouts Table */
@@ -179,4 +184,41 @@
 
 .workouts-table tr.completed .completion-button:hover {
   background-color: #e0a800;
+}
+/* .is-animating {
+  width: 100%;
+  height: 300px; 
+  border-radius: 8px;
+  margin-bottom: 20px;
+  animation: cycle-images 4s linear infinite;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes cycle-images {
+  0% {
+    background-image: url('./assets/Gemini_Generated_Image_6kc4jk6kc4jk6kc4.png');
+  }
+  33%{
+    background-image: url('./assets/Gemini_Generated_Image_35zbx835zbx835zb.png');
+  }
+  66%{
+    background-image: url('./assets/Gemini_Generated_Image_bxccwcbxccwcbxcc.png');
+  }
+  100%{
+    background-image: url('./assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png');
+  }
+} */
+
+/* Premade Plans Image Gallery */
+.image-gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between the images */
+}
+
+.image-gallery-container img {
+  width: 100%; /* Perfectly fills the area apart from the sidebar */
+  height: auto; /* Scales proportionally */
+  border-radius: 8px; /* Optional: gently rounds the image corners */
 }

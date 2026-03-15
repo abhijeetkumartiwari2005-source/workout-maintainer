@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import WorkoutsTable from './WorkoutsTable';
 import Sidebar from './Sidebar';
+import planImage1 from './assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png';
+import planImage2 from './assets/Gemini_Generated_Image_35zbx835zbx835zb.png';
+import planImage3 from './assets/Gemini_Generated_Image_bxccwcbxccwcbxcc.png';
+import planImage4 from './assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png';
+
 
 function App() {
   const [workouts, setWorkouts] = useState(() => {
@@ -125,7 +130,17 @@ function App() {
           </>
         );
       case 'premadePlans':
-        return <h2>Pre-made Plans</h2>;
+        return (
+          <div>
+            <h2>Pre-made Plans</h2>
+            <div className="image-gallery-container">
+              <img src={planImage1} alt="Workout Plan 1" />
+              <img src={planImage2} alt="Workout Plan 2" />
+              <img src={planImage3} alt="Workout Plan 3" />
+              <img src={planImage4} alt="Workout Plan 4" />
+            </div>
+          </div>
+        );
       case 'personalisedPlans':
         return <h2>Personalised Plans</h2>;
       default:
@@ -136,7 +151,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <Sidebar setActiveView={setActiveView} />
+      <Sidebar setActiveView={setActiveView}
+      activeView={activeView} />
       <div className="app">
         <header className="app-header">
           <h1>Workout Maintainer</h1>
