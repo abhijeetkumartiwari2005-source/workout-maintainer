@@ -8,6 +8,7 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
           <th>Workout</th>
           <th>Sets</th>
           <th>Reps</th>
+          <th>Weight</th>
           <th>Progress</th>
           <th>Status</th>
           <th>Action</th>
@@ -35,6 +36,15 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
                 onChange={(e) => updateWorkout(workout.id, 'reps', e.target.value)}
                 disabled={isFinalized}
               />
+            </td>
+            <td>    
+            <input
+              type="number"
+              placeholder="Weight"
+              value={workout.weight || ''}
+              onChange={(e)=> updateWorkout(workout.id, 'weight',e.target.value)}
+              disabled={isFinalized}
+            />  
             </td>
             <td>
               <div className="sets-progress">

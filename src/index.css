@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -10,12 +12,24 @@ html, body, #root {
 }
 
 body {
-  background-image: linear-gradient(rgba(63, 103, 189, 0.299), rgba(57, 181, 119, 0.24)), url('./assets/Gemini_Generated_Image_6kc4jk6kc4jk6kc4.png');
-  background-size: cover;
   font-family: 'Inter', sans-serif;
+  color: #f0f0f0;
+  line-height: 1.5;
+  position: relative;
+  background-color: #121212f7;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  background-image: linear-gradient(rgba(63, 103, 189, 0.1), rgba(57, 181, 119, 0.1)), url('./assets/Gemini_Generated_Image_arlxhparlxhparlx.png');
+  background-size: cover;
   background-position: center;
   background-repeat: repeat;
-  background-attachment: fixed;
-  color: #333;
-  line-height: 1.5;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }

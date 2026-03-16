@@ -133,10 +133,17 @@
   background-color: #f7f7f7;
   font-weight: 600;
   color: #333;
+  transition: color 0.2s;
+}
+
+.workouts-table th:hover {
+  color: #00d9ffba; 
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  transition: color 0.2s, box-shadow 0.2s;
 }
 
 .workouts-table tr {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #5f0d0d;
   transition: background-color 0.2s;
 }
 
@@ -145,7 +152,9 @@
 }
 
 .workouts-table tr:hover {
-  background-color: #f9f9f9;
+  background-color: #341cba;
+  transform: 0.5s;
+ 
 }
 
 .workouts-table tr.completed {
@@ -185,32 +194,6 @@
 .workouts-table tr.completed .completion-button:hover {
   background-color: #e0a800;
 }
-/* .is-animating {
-  width: 100%;
-  height: 300px; 
-  border-radius: 8px;
-  margin-bottom: 20px;
-  animation: cycle-images 4s linear infinite;
-  background-size: cover;
-  background-position: center;
-}
-
-@keyframes cycle-images {
-  0% {
-    background-image: url('./assets/Gemini_Generated_Image_6kc4jk6kc4jk6kc4.png');
-  }
-  33%{
-    background-image: url('./assets/Gemini_Generated_Image_35zbx835zbx835zb.png');
-  }
-  66%{
-    background-image: url('./assets/Gemini_Generated_Image_bxccwcbxccwcbxcc.png');
-  }
-  100%{
-    background-image: url('./assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png');
-  }
-} */
-
-
 .image-gallery-container {
   display: flex;
   flex-direction: column;

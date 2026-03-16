@@ -33,6 +33,7 @@ function App() {
         name: trimmedName,
         reps: '',
         sets: '',
+        weight:'',
         setsCompleted: 0,
         completed: false,
       },
