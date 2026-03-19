@@ -14,6 +14,7 @@ const Sidebar = ({ setActiveView, activeView }) => {
       </button>
       
       <button className="sidebar-button" onClick={() => setActiveView('personalisedPlans')}>Personalised plans</button>
+      
     </div>
   );
 };

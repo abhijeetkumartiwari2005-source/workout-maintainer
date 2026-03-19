@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import WorkoutsTable from './WorkoutsTable';
 import Sidebar from './Sidebar';
@@ -6,6 +7,7 @@ import planImage1 from './assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png';
 import planImage2 from './assets/Gemini_Generated_Image_35zbx835zbx835zb.png';
 import planImage3 from './assets/Gemini_Generated_Image_bxccwcbxccwcbxcc.png';
 import planImage4 from './assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png';
+import CalorieTracker from './calorieTracker';
 
 
 function App() {
@@ -142,12 +144,13 @@ function App() {
             </div>
           </div>
         );
-      case 'personalisedPlans':
-        return <h2>Personalised Plans</h2>;
+      case 'calorieTracker':
+        return <CalorieTracker />;
       default:
         return <h2>Plan today's workout</h2>;
     }
   };
+  
   
 
   return (
@@ -158,6 +161,15 @@ function App() {
         <header className="app-header">
           <h1>Workout Maintainer</h1>
           <h3>workout plan for {new Date().toLocaleDateString()}</h3>
+          {activeView === 'home' && (
+            <button 
+              className="btn btn-primary shadow-sm"
+              style={{ position: 'absolute', top: '20px', right: '20px' }}
+              onClick={() => setActiveView('calorieTracker')}
+            >
+              Calorie Tracker
+            </button>
+          )}
         </header>
         <main className="app-main">
           {renderContent()}
