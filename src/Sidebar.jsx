@@ -4,16 +4,17 @@ import './Sidebar.css';
 const Sidebar = ({ setActiveView, activeView }) => {
   return (
     <div className="sidebar">
-      <button className="sidebar-button" onClick={() => setActiveView('planWorkout')}>Plan today's workout</button>
+      <button className="sidebar-button" onClick={() => setActiveView(activeView ==='planWorkout' ?'home': 'planWorkout')}>Plan today's workout</button>
       
-      <button 
+      <button
+      key="premadePlans" 
         className="sidebar-button"
-        onClick={() => setActiveView('premadePlans')}
+        onClick={() => setActiveView(activeView === 'premadePlans' ? 'home' : 'premadePlans')}
       >
         Pre-made plans
       </button>
       
-      <button className="sidebar-button" onClick={() => setActiveView('personalisedPlans')}>Personalised plans</button>
+      <button className="sidebar-button" onClick={() => setActiveView( activeView === 'personalisedPlans' ? 'home' : 'personalisedPlans')}>Personalised plans</button>
       
     </div>
   );

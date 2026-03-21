@@ -161,13 +161,13 @@ function App() {
         <header className="app-header">
           <h1>Workout Maintainer</h1>
           <h3>workout plan for {new Date().toLocaleDateString()}</h3>
-          {activeView === 'home' && (
+          {(activeView === 'home' || activeView === 'calorieTracker') && (
             <button 
               className="btn btn-primary shadow-sm"
               style={{ position: 'absolute', top: '20px', right: '20px' }}
-              onClick={() => setActiveView('calorieTracker')}
+              onClick={() => setActiveView(activeView === 'calorieTracker' ? 'home' : 'calorieTracker')}
             >
-              Calorie Tracker
+              {activeView === 'calorieTracker' ? 'Back to Home' : 'Calorie Tracker'}
             </button>
           )}
         </header>
