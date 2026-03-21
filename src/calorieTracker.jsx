@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 const CalorieTracker = () => {
   const [goal, setGoal] = useState(2500);
   const [consumed, setConsumed] = useState(0);
   const [addAmount, setAddAmount] = useState('');
   const [goalInput, setGoalInput] = useState('');
+
+  useEffect(()=>{
+    const savedData = localStorage.getItem('calorieData');
+    if(savedData){
+      const {goal: savedGoal, consumed: savedConsumed} = JSON.parse(savedData);
+      if(savedGoal){
+        setGoal(savedGoal);
+      }
+      if(savedConsumed){
+        setConsumed(savedConsumed);
+      }
+    }},[]);
+     useEffect(()=>{
+      localStorage.setItem('calorieData',JSON.stringify({goal,consumed}));
+    },[goal,consumed]
+    
+    
+    );
 
   const radius = 60;
   const circumference = 2 * Math.PI * radius;
