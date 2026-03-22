@@ -1,24 +1,30 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useRef } from 'react';
 
 const CalorieTracker = () => {
   const [goal, setGoal] = useState(2500);
   const [consumed, setConsumed] = useState(0);
   const [addAmount, setAddAmount] = useState('');
   const [goalInput, setGoalInput] = useState('');
+  const isInitialMount = useRef(true);
 
   useEffect(()=>{
     const savedData = localStorage.getItem('calorieData');
     if(savedData){
       const {goal: savedGoal, consumed: savedConsumed} = JSON.parse(savedData);
-      if(savedGoal){
+      if(savedGoal !=null){
         setGoal(savedGoal);
       }
-      if(savedConsumed){
+      if(savedConsumed !=null){
         setConsumed(savedConsumed);
       }
     }},[]);
      useEffect(()=>{
+      if(isInitialMount.current){
+        isInitialMount.current=false;
+      }
+      else{
       localStorage.setItem('calorieData',JSON.stringify({goal,consumed}));
+    }
     },[goal,consumed]
     
     
