@@ -44,6 +44,7 @@ const CalorieTracker = () => {
       setGoalInput('');
     }
   };
+  //copied below from bootstrap
 
   return (
     <div className="container py-4 d-flex justify-content-center">
@@ -65,7 +66,7 @@ const CalorieTracker = () => {
 
           <form onSubmit={handleAddCalories} className="mt-3">
             <div className="input-group">
-              <input type="number" className="form-control" placeholder="Enter kcal" value={addAmount} onChange={(e) => setAddAmount(e.target.value)} min="1" />
+              <input type="number" className="form-control" placeholder="Enter kcal" value={addAmount} onChange={(e) => setAddAmount(e.target.value)} />
               <button className="btn btn-primary" type="submit">Add</button>
             </div>
           </form>
