@@ -11,37 +11,6 @@ Workout Maintainer is a web application designed to help you plan, track, and ma
 -   **Pre-made Plans:** View a gallery of pre-made workout plans to get started quickly.
 -   **Persistent Data:** Your workout data and calorie information are saved in your browser's local storage, so your data is there when you come back.
 -   **User-Friendly Interface:** A clean and simple interface built with Bootstrap.
-
-## Getting Started
-
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
-You need to have Node.js and npm (or yarn) installed on your machine.
-
--   [Node.js](https://nodejs.org/) (which includes npm)
-
-### Installation & Running
-
-1.  Clone the repo
-    ```sh
-    git clone https://github.com/your_username/workout-maintainer.git
-    ```
-2.  Navigate to the project directory
-    ```sh
-    cd workout-maintainer
-    ```
-3.  Install NPM packages
-    ```sh
-    npm install
-    ```
-4.  Run the development server
-    ```sh
-    npm run dev
-    ```
-5.  Open your browser and go to `http://localhost:5173` (or whatever port the console indicates).
-
 ## Usage
 
 1.  **Plan Your Workout:** Click on "Plan today's workout" in the sidebar.
@@ -60,4 +29,4 @@ You need to have Node.js and npm (or yarn) installed on your machine.
 
 ---
 
-_This README was generated with the assistance of a large language model._
+
