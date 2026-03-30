@@ -1,9 +1,10 @@
 import React from 'react';
 import './Sidebar.css';
 
-const Sidebar = ({ setActiveView, activeView }) => {
+const Sidebar = ({ setActiveView, activeView,glow }) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${glow?'glow':''}`}>
+   
       <button className="sidebar-button" onClick={() => setActiveView(activeView ==='planWorkout' ?'home': 'planWorkout')}>Plan today's workout</button>
       
       <button

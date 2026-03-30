@@ -24,6 +24,7 @@ body::before {
   position: fixed;
   background-image: linear-gradient(rgba(63, 103, 189, 0.1), rgba(57, 181, 119, 0.1)), url('./assets/Gemini_Generated_Image_arlxhparlxhparlx.png');
   background-size: cover;
+  backdrop-filter: blur(5px);
   background-position: center;
   background-repeat: repeat;
   opacity: 0.3;

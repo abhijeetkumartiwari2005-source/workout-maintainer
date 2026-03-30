@@ -8,7 +8,14 @@ body {
   height: 100%;
 }
 
-/* Basic layout */
+.header-buttons-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
 .app {
   font-family: system-ui, sans-serif;
   flex: 1;
@@ -16,27 +23,62 @@ body {
 }
 
 .app-header {
-  text-align: left;
-  font-family: monospace;
-  margin-bottom: 1.5rem;
-  color: #FFFFFF;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-  border-radius: 8px;
+  position: relative; /* Added for positioning child buttons */
+  padding-bottom: 2rem; /* Ensure space for absolutely positioned buttons */
+}
+
+/* Existing .welcome-message CSS remains the same */
+
+.welcome-message {
+  text-align: center;
 }
 
 .welcome-message h2 {
-  color: #FFFFFF;
-  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: none; 
+  padding: 15px 25px;
+  border-radius: 8px;
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  max-width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.welcome-message h2:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.23);
+  background: rgba(99, 102, 241, 0.2); 
+  cursor: default; 
 }
 
 .welcome-message p {
-  color: #B9BBBE;
-  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
   font-size: 1.2rem;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  max-width: 70%;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+.welcome-message p:hover {
+  opacity: 0.9;
+ transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.23);
+  background: rgba(99, 102, 241, 0.2); 
+  cursor: default; 
+}
+
 
 .workout-form {
   display: flex;
@@ -94,14 +136,34 @@ body {
   font-style: bold;
   font-family: monospace;
 }
+.finalize-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-/* Workouts Table */
+.finalize-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #6366f1; /* Indigo glow */
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+}
+
 .workouts-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  border-color: rgba(185, 37, 185, 0.128);
   overflow: hidden;
   background-color: #2C2F33;
 }
@@ -123,8 +185,13 @@ body {
   border-bottom: none;
 }
 
+.workouts-table tr {
+  transition: all 0.3s ease;
+}
 .workouts-table tr:hover {
-  background-color: #4F545C;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
 }
 
 .workouts-table tr.completed {
@@ -179,4 +246,24 @@ body {
 .image-gallery-container img:hover {
   transition-duration: 0.5s;
   transform: scale(1.05);
+}
+
+/* New CSS class for the highlighted Calorie Tracker button */
+.highlight-calorie-button {
+  background-color: #faa61a !important; /* Yellowish-orange */
+  color: #333 !important;
+  border-color: #e59400 !important;
+  box-shadow: 0 0 15px rgba(250, 166, 26, 0.6) !important;
+  transform: scale(1.05);
+}
+
+/* Adjust general button styles for a consistent look with Bootstrap */
+.btn.btn-secondary {
+  background-color: #4F545C;
+  border-color: #4F545C;
+  color: #FFFFFF;
+}
+.btn.btn-secondary:hover {
+  background-color: #5d626a;
+  border-color: #5d626a;
 }

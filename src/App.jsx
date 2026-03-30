@@ -17,13 +17,18 @@ function App() {
   });
   const [name, setName] = useState('');
   const [isFinalized, setIsFinalized] = useState(false);
+  const [highlightCalorieButton, setHighlightCalorieButton] = useState(false); // New state for button highlight
   const [activeView, setActiveView] = useState('home');
-
+  const[sidebarGlow,setSidebarGlow]= useState(false);
   useEffect(() => {
     localStorage.setItem('workouts', JSON.stringify(workouts));
   }, [workouts]);
   const [showPlan, setShowPlan] = useState(false);
-  
+
+  const handleWelcomeClick=()=>{
+    setSidebarGlow(true);
+    setTimeout(() =>setSidebarGlow(false),500);
+  }
   const addWorkout = (e) => {
     e.preventDefault();
     const trimmedName = name.trim();
@@ -73,7 +78,8 @@ function App() {
       return(
       <div className="welcome-message">
         <h2>Welcome to Workout Maintainer!</h2>
-        <p> select an option to get started.</p>
+        <p onClick={handleWelcomeClick}> select an option to get started.
+        </p>
         </div>
           );
       case 'planWorkout':
@@ -156,20 +162,30 @@ function App() {
   return (
     <div className="app-container">
       <Sidebar setActiveView={setActiveView}
-      activeView={activeView} />
+      activeView={activeView}
+      glow={sidebarGlow} />
       <div className="app">
         <header className="app-header">
           <h1>Workout Maintainer</h1>
           <h3>workout plan for {new Date().toLocaleDateString()}</h3>
-          {(activeView === 'home' || activeView === 'calorieTracker') && (
+          <div className="header-buttons-container">
+            {/* Button to toggle the style of the Calorie Tracker button */}
+            {activeView === 'home' && ( // Only show when on the home view
+              <button
+                className="btn btn-secondary shadow-sm"
+                onClick={() => setHighlightCalorieButton(prev => !prev)}
+              >
+                Toggle Calorie Button Style
+              </button>
+            )}
+            
             <button 
-              className="btn btn-primary shadow-sm"
-              style={{ position: 'absolute', top: '20px', right: '20px' }}
+              className={`btn btn-primary shadow-sm ${highlightCalorieButton ? 'highlight-calorie-button' : ''}`}
               onClick={() => setActiveView(activeView === 'calorieTracker' ? 'home' : 'calorieTracker')}
             >
               {activeView === 'calorieTracker' ? 'Back to Home' : 'Calorie Tracker'}
             </button>
-          )}
+          </div>
         </header>
         <main className="app-main">
           {renderContent()}
