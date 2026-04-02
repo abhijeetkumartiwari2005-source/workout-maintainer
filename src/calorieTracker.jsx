@@ -1,4 +1,6 @@
 import React, { useState,useEffect,useRef } from 'react';
+import fatguy from './assets/fatguy.png';
+import originalImg from './assets/Gemini_Generated_Image_arlxhparlxhparlx.png';
 
 const CalorieTracker = () => {
   const [goal, setGoal] = useState(2500);
@@ -18,6 +20,13 @@ const CalorieTracker = () => {
         setConsumed(savedConsumed);
       }
     }},[]);
+        useEffect(() => {
+      const bgImage = consumed > goal 
+        ? `url(${fatguy})`
+        : `url(${originalImg})`;
+      
+      document.documentElement.style.setProperty('--bg-image', bgImage);
+    }, [consumed, goal]);
      useEffect(()=>{
       if(isInitialMount.current){
         isInitialMount.current=false;
@@ -38,8 +47,9 @@ const CalorieTracker = () => {
   const handleAddCalories = (e) => {
     e.preventDefault();
     if (addAmount) {
-      setConsumed(consumed + parseInt(addAmount, 10));
-      setAddAmount(''); 
+      const amount = parseInt(addAmount, 10);
+      setConsumed(Math.max(0, consumed + amount));
+      setAddAmount('');
     }
   };
 
@@ -61,11 +71,11 @@ const CalorieTracker = () => {
           <div className="position-relative d-inline-block mb-3">
             <svg width="150" height="150" viewBox="0 0 150 150">
               <circle cx="75" cy="75" r={radius} stroke="#e9ecef" strokeWidth="12" fill="none" />
-              <circle cx="75" cy="75" r={radius} stroke="#0d6efd" strokeWidth="12" fill="none" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} strokeLinecap="round" transform="rotate(-90 75 75)" style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }} />
+              <circle cx="75" cy="75" r={radius} stroke={consumed>goal ?'#dc3545': '#0d6efd' } strokeWidth="12" fill="none" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} strokeLinecap="round" transform="rotate(-90 75 75)" style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }} />
             </svg>
             
             <div className="position-absolute top-50 start-50 translate-middle w-100">
-              <h3 className="mb-0 fw-bold text-primary">{consumed}</h3>
+              <h3 className={`mb-0 fw-bold ${consumed > goal ? 'text-danger' : 'text-primary'}`}>{consumed}</h3>
               <small className="text-muted">/ {goal} kcal</small>
             </div>
           </div>
