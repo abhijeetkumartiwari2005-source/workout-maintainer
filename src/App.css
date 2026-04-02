@@ -5,6 +5,7 @@ body {
 
 .app-container {
   display: flex;
+  flex-direction: row;
   height: 100%;
 }
 
@@ -20,6 +21,7 @@ body {
   font-family: system-ui, sans-serif;
   flex: 1;
   padding: 2rem;
+  min-width: 0;
 }
 
 .app-header {
@@ -199,6 +201,71 @@ body {
   color: #a0a0a0;
 }
 
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .app {
+    padding: 1rem;
+  }
+
+  .app-header {
+    padding-bottom: 1.5rem;
+  }
+
+  .header-buttons-container {
+    position: static;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .header-buttons-container button {
+    width: auto;
+    min-width: 140px;
+  }
+
+  .workout-form {
+    flex-direction: column;
+  }
+
+  .workout-form input,
+  .workout-form button {
+    width: 100%;
+  }
+
+  .welcome-message h2,
+  .welcome-message p {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .workouts-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .workouts-table thead,
+  .workouts-table tbody,
+  .workouts-table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .workouts-table th,
+  .workouts-table td {
+    min-width: 120px;
+    padding: 0.75rem;
+  }
+}
+
 .workouts-table tr.completed .workout-name {
   text-decoration: line-through;
 }
@@ -234,13 +301,15 @@ body {
 .image-gallery-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between the images */
+  gap: 1rem; /* Space between the images */
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .image-gallery-container img {
   width: 100%; 
   height: auto;
-  border-radius: 8px; 
+  border-radius: 12px; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .image-gallery-container img:hover {
