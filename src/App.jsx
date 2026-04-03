@@ -6,7 +6,6 @@ import Sidebar from './Sidebar';
 import planImage1 from './assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png';
 import planImage2 from './assets/Gemini_Generated_Image_35zbx835zbx835zb.png';
 import planImage3 from './assets/Gemini_Generated_Image_bxccwcbxccwcbxcc.png';
-import planImage4 from './assets/Gemini_Generated_Image_r8ct64r8ct64r8ct.png';
 import CalorieTracker from './calorieTracker';
 
 
@@ -17,13 +16,12 @@ function App() {
   });
   const [name, setName] = useState('');
   const [isFinalized, setIsFinalized] = useState(false);
-  const [highlightCalorieButton, setHighlightCalorieButton] = useState(false); // New state for button highlight
+
   const [activeView, setActiveView] = useState('home');
   const[sidebarGlow,setSidebarGlow]= useState(false);
   useEffect(() => {
     localStorage.setItem('workouts', JSON.stringify(workouts));
   }, [workouts]);
-  const [showPlan, setShowPlan] = useState(false);
 
   const handleWelcomeClick=()=>{
     setSidebarGlow(true);
@@ -118,6 +116,7 @@ function App() {
                 updateWorkoutCompletion={updateWorkoutCompletion}
                 updateWorkout={updateWorkout}
                 removeWorkout={removeWorkout}
+                isFinalized={isFinalized}
               />
             ) : workouts.length > 0 ? (
               <ul className="workout-list">
@@ -146,7 +145,7 @@ function App() {
               <img src={planImage1} alt="Workout Plan 1" />
               <img src={planImage2} alt="Workout Plan 2" />
               <img src={planImage3} alt="Workout Plan 3" />
-              <img src={planImage4} alt="Workout Plan 4" />
+              <img src={planImage1} alt="Workout Plan 4" />
             </div>
           </div>
         );
@@ -169,18 +168,10 @@ function App() {
           <h1>Workout Maintainer</h1>
           <h3>workout plan for {new Date().toLocaleDateString()}</h3>
           <div className="header-buttons-container">
-            {/* Button to toggle the style of the Calorie Tracker button */}
-            {activeView === 'home' && ( // Only show when on the home view
-              <button
-                className="btn btn-secondary shadow-sm"
-                onClick={() => setHighlightCalorieButton(prev => !prev)}
-              >
-                Toggle Calorie Button Style
-              </button>
-            )}
+
             
             <button 
-              className={`btn btn-primary shadow-sm ${highlightCalorieButton ? 'highlight-calorie-button' : ''}`}
+              className="btn btn-primary shadow-sm"
               onClick={() => setActiveView(activeView === 'calorieTracker' ? 'home' : 'calorieTracker')}
             >
               {activeView === 'calorieTracker' ? 'Back to Home' : 'Calorie Tracker'}
