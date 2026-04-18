@@ -60,6 +60,10 @@ const CalorieTracker = () => {
       setGoalInput('');
     }
   };
+
+  const handleReset = () => {
+    setConsumed(0);
+  };
   //copied below from bootstrap
 
   return (
@@ -93,6 +97,7 @@ const CalorieTracker = () => {
               <button className="btn btn-outline-secondary" type="submit">Set Goal</button>
             </div>
           </form>
+          <button className="btn btn-danger mt-2" onClick={handleReset}>Reset</button>
         </div>
       </div>
     </div>

@@ -25,7 +25,6 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
                 value={workout.sets}
                 onChange={(e) => updateWorkout(workout.id, 'sets', e.target.value)}
                 className={workout.sets > 7 ? 'big-warning-sets' : (workout.sets > 4 ? 'warning-sets' : 'safe-sets')}
-                disabled={isFinalized}
               />
             </td>
             <td>
@@ -34,7 +33,6 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
                 placeholder="Reps"
                 value={workout.reps}
                 onChange={(e) => updateWorkout(workout.id, 'reps', e.target.value)}
-                disabled={isFinalized}
               />
             </td>
             <td>    
@@ -43,7 +41,6 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
               placeholder="Weight"
               value={workout.weight || ''}
               onChange={(e)=> updateWorkout(workout.id, 'weight',e.target.value)}
-              disabled={isFinalized}
             />  
             </td>
             <td>
@@ -57,7 +54,6 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
                       const newSetsCompleted = workout.setsCompleted > i ? i : i + 1;
                       updateWorkoutCompletion(workout.id, newSetsCompleted);
                     }}
-                    disabled={isFinalized}
                   />
                 ))}
               </div>
@@ -69,7 +65,6 @@ const WorkoutsTable = ({ workouts, updateWorkoutCompletion, updateWorkout, remov
                   const allSetsCompleted = workout.setsCompleted === parseInt(workout.sets, 10);
                   updateWorkoutCompletion(workout.id, allSetsCompleted ? 0 : parseInt(workout.sets, 10));
                 }}
-                disabled={isFinalized}
               >
                 {workout.setsCompleted === parseInt(workout.sets, 10) ? 'Undo' : 'Complete'}
               </button>
